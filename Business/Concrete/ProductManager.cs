@@ -31,8 +31,9 @@ namespace Business.Concrete
             _categoryService = categoryService;
         }
 
+
         //parantezin içindekine ("product.add, admin, ... ve benzeri") claim denir
-        [SecuredOperation("product.add,admin")]
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)

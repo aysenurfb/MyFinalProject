@@ -42,6 +42,7 @@ builder.Services.AddDependencyResolvers(new ICoreModule[] {
     new CoreModule() });
 
 
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -66,7 +67,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureCustomExceptionMiddleware(); //butun sisteni try catch içine aldýk sayesinde
 
+app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader()); //web abinin angular da çalýsabilmesi için. ben bu siteye güveniyorum demektir.
 
 app.UseHttpsRedirection();
 app.UseRouting();
